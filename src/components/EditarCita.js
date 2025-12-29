@@ -33,7 +33,7 @@ const EditarCita = ({ cita, onClose, onActualizado }) => {
     try {
       const fechaHoraCompleta = new Date(`${fechaCita}T${horaCita}`);
       
-      await axios.put(`http://localhost:5000/api/notificaciones/${cita._id}`, {
+      await axios.put(`https://tesis-backend-170896327116.us-central1.run.app/api/notificaciones/${cita._id}`, {
         titulo,
         mensaje,
         fecha_cita: fechaHoraCompleta.toISOString(),
@@ -61,7 +61,7 @@ const EditarCita = ({ cita, onClose, onActualizado }) => {
     setCargando(true);
 
     try {
-      await axios.delete(`http://localhost:5000/api/notificaciones/${cita._id}`, {
+      await axios.delete(`https://tesis-backend-170896327116.us-central1.run.app/api/notificaciones/${cita._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
 

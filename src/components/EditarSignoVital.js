@@ -41,7 +41,7 @@ const EditarSignoVital = ({ signo, onClose, onActualizado }) => {
     setCargando(true);
 
     try {
-      await axios.put(`http://localhost:5000/api/signos-vitales/${signo._id}`, {
+      await axios.put(`https://tesis-backend-170896327116.us-central1.run.app/api/signos-vitales/${signo._id}`, {
         tipo,
         valor
       }, {
@@ -67,7 +67,7 @@ const EditarSignoVital = ({ signo, onClose, onActualizado }) => {
     setCargando(true);
 
     try {
-      await axios.delete(`http://localhost:5000/api/signos-vitales/${signo._id}`, {
+      await axios.delete(`https://tesis-backend-170896327116.us-central1.run.app/api/signos-vitales/${signo._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
 

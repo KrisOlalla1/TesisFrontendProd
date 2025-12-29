@@ -8,6 +8,7 @@ import AgendarCita from '../components/AgendarCita';
 import AnalisisSignos from '../components/AnalisisSignos';
 import EditarPacienteModal from '../components/EditarPacienteModal';
 import axios from 'axios';
+import API_URL from '../config';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
@@ -53,7 +54,7 @@ const Dashboard = () => {
   const fetchPacientes = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/doctores/pacientes', {
+      const response = await axios.get(`${API_URL}/api/doctores/pacientes`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPacientes(response.data.data);
@@ -71,7 +72,7 @@ const Dashboard = () => {
       const nuevoEstado = estadoActual === 'activo' ? 'inactivo' : 'activo';
 
       await axios.patch(
-        `http://localhost:5000/api/pacientes/${id}/estado`,
+        `${API_URL}/api/pacientes/${id}/estado`,
         { estado: nuevoEstado },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -91,7 +92,7 @@ const Dashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/pacientes/${id}`, {
+      await axios.delete(`${API_URL}/api/pacientes/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPacientes(pacientes.filter(p => p._id !== id));

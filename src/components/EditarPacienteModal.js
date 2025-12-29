@@ -177,7 +177,7 @@ const EditarPacienteModal = ({ paciente, onClose, onActualizado }) => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        `http://localhost:5000/api/pacientes/${paciente._id}`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/pacientes/${paciente._id}`,
         {
           cedula: formData.cedula,
           nombre_completo: formData.nombre_completo,

@@ -23,14 +23,14 @@ const CalendarioSignos = ({ paciente }) => {
         
         // Cargar signos vitales
         const signosRes = await axios.get(
-          `http://localhost:5000/api/signos-vitales/${pacienteId}`,
+          `https://tesis-backend-170896327116.us-central1.run.app/api/signos-vitales/${pacienteId}`,
           { headers }
         );
         setSignosVitales(signosRes.data.data || []);
 
         // Cargar citas
         const citasRes = await axios.get(
-          `http://localhost:5000/api/notificaciones/paciente/${pacienteId}`,
+          `https://tesis-backend-170896327116.us-central1.run.app/api/notificaciones/paciente/${pacienteId}`,
           { headers }
         );
         
@@ -48,7 +48,7 @@ const CalendarioSignos = ({ paciente }) => {
 
   const handleDeleteSigno = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/signos-vitales/${id}`);
+      await axios.delete(`https://tesis-backend-170896327116.us-central1.run.app/api/signos-vitales/${id}`);
       setSignosVitales(prev => prev.filter(s => s._id !== id));
     } catch (err) {
       console.error('Error eliminando signo', err);
@@ -60,7 +60,7 @@ const CalendarioSignos = ({ paciente }) => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/notificaciones/${id}`, {
+      await axios.delete(`https://tesis-backend-170896327116.us-central1.run.app/api/notificaciones/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCitasPaciente(prev => prev.filter(c => c._id !== id));
@@ -76,7 +76,7 @@ const CalendarioSignos = ({ paciente }) => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/notificaciones/${id}`, 
+      await axios.put(`https://tesis-backend-170896327116.us-central1.run.app/api/notificaciones/${id}`, 
         { estado: 'completada' },
         { headers: { Authorization: `Bearer ${token}` } }
       );

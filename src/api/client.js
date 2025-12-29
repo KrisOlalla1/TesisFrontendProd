@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// Base URL from env or default to local API
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-const baseURL = `${API_BASE}/api`;
+// Base URL - Backend en Google Cloud Run
+const baseURL = 'https://tesis-backend-170896327116.us-central1.run.app/api';
 
 const api = axios.create({ baseURL });
 

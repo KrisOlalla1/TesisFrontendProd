@@ -73,7 +73,7 @@ const AdminDashboard = () => {
   const cargarDoctores = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/admin/doctores', {
+      const response = await axios.get('https://tesis-backend-170896327116.us-central1.run.app/api/admin/doctores', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setDoctores(response.data.data || []);
@@ -87,7 +87,7 @@ const AdminDashboard = () => {
   const cargarAdmins = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/admin/admins', {
+      const response = await axios.get('https://tesis-backend-170896327116.us-central1.run.app/api/admin/admins', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAdmins(response.data.data || []);
@@ -102,7 +102,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/admin/doctores', nuevoDoctor, {
+      await axios.post('https://tesis-backend-170896327116.us-central1.run.app/api/admin/doctores', nuevoDoctor, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Doctor registrado exitosamente');
@@ -119,7 +119,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/admin/admins', nuevoAdmin, {
+      await axios.post('https://tesis-backend-170896327116.us-central1.run.app/api/admin/admins', nuevoAdmin, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Administrador registrado exitosamente');
@@ -137,7 +137,7 @@ const AdminDashboard = () => {
       const nuevoEstado = estadoActual === 'activo' ? 'inactivo' : 'activo';
       const token = localStorage.getItem('token');
       await axios.patch(
-        `http://localhost:5000/api/admin/doctores/${doctorId}/estado`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/admin/doctores/${doctorId}/estado`,
         { estado: nuevoEstado },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -153,7 +153,7 @@ const AdminDashboard = () => {
       const nuevoEstado = estadoActual === 'activo' ? 'inactivo' : 'activo';
       const token = localStorage.getItem('token');
       await axios.patch(
-        `http://localhost:5000/api/admin/admins/${adminId}/estado`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/admin/admins/${adminId}/estado`,
         { estado: nuevoEstado },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -170,7 +170,7 @@ const AdminDashboard = () => {
     }
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/admin/doctores/${doctorId}`, {
+      await axios.delete(`https://tesis-backend-170896327116.us-central1.run.app/api/admin/doctores/${doctorId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Doctor eliminado exitosamente');
@@ -187,7 +187,7 @@ const AdminDashboard = () => {
     }
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/admin/admins/${adminId}`, {
+      await axios.delete(`https://tesis-backend-170896327116.us-central1.run.app/api/admin/admins/${adminId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Administrador eliminado exitosamente');
@@ -207,7 +207,7 @@ const AdminDashboard = () => {
         delete dataToSend.contrasena;
       }
       await axios.put(
-        `http://localhost:5000/api/admin/doctores/${doctorAEditar.id}`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/admin/doctores/${doctorAEditar.id}`,
         dataToSend,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -229,7 +229,7 @@ const AdminDashboard = () => {
         delete dataToSend.contrasena;
       }
       await axios.put(
-        `http://localhost:5000/api/admin/admins/${adminAEditar.id}`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/admin/admins/${adminAEditar.id}`,
         dataToSend,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -253,7 +253,7 @@ const AdminDashboard = () => {
       delete dataToSend._id;
 
       await axios.put(
-        `http://localhost:5000/api/doctores/pacientes/${pacienteAEditar._id}`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/doctores/pacientes/${pacienteAEditar._id}`,
         dataToSend,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -273,7 +273,7 @@ const AdminDashboard = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.delete(
-        `http://localhost:5000/api/doctores/pacientes/${pacienteId}`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/doctores/pacientes/${pacienteId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert('Paciente eliminado exitosamente');
@@ -289,7 +289,7 @@ const AdminDashboard = () => {
       const nuevoEstado = (estadoActual === 'activo') ? 'inactivo' : 'activo';
       const token = localStorage.getItem('token');
       await axios.put(
-        `http://localhost:5000/api/doctores/pacientes/${pacienteId}`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/doctores/pacientes/${pacienteId}`,
         { estado: nuevoEstado },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -307,7 +307,7 @@ const AdminDashboard = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.patch(
-        `http://localhost:5000/api/admin/doctores/${doctorPermisos._id}/permisos`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/admin/doctores/${doctorPermisos._id}/permisos`,
         {
           puede_editar_pacientes: doctorPermisos.permisos.puede_editar_pacientes,
           puede_eliminar_pacientes: doctorPermisos.permisos.puede_eliminar_pacientes
@@ -327,7 +327,7 @@ const AdminDashboard = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.get(
-        `http://localhost:5000/api/admin/doctores/${doctor._id}/pacientes`,
+        `https://tesis-backend-170896327116.us-central1.run.app/api/admin/doctores/${doctor._id}/pacientes`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setPacientesDelDoctor(response.data.data || []);

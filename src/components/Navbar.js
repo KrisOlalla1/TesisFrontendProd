@@ -24,7 +24,7 @@ const Navbar = ({ userName, onRegistrar, onHome, onAdmins, userRole = 'doctor' }
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
-      const response = await axios.get('http://localhost:5000/api/notificaciones/hoy', {
+      const response = await axios.get('https://tesis-backend-170896327116.us-central1.run.app/api/notificaciones/hoy', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
@@ -38,7 +38,7 @@ const Navbar = ({ userName, onRegistrar, onHome, onAdmins, userRole = 'doctor' }
   const handleCompletarCita = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/notificaciones/${id}`,
+      await axios.put(`https://tesis-backend-170896327116.us-central1.run.app/api/notificaciones/${id}`,
         { estado: 'completada' },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -21,7 +21,7 @@ const AnalisisSignos = ({ paciente, onClose }) => {
       try {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        const res = await axios.get(`http://localhost:5000/api/signos-vitales/${paciente._id}`, { headers });
+        const res = await axios.get(`https://tesis-backend-170896327116.us-central1.run.app/api/signos-vitales/${paciente._id}`, { headers });
         setSignosVitales(res.data.data || []);
       } catch (err) {
         console.error('Error cargando signos vitales', err);

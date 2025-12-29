@@ -259,7 +259,7 @@ const RegistrarPaciente = ({ onClose, doctorIdOverride }) => {
         payload.doctor_asignado = doctorIdOverride;
       }
 
-      const response = await axios.post('http://localhost:5000/api/doctores/pacientes', payload, {
+      const response = await axios.post('https://tesis-backend-170896327116.us-central1.run.app/api/doctores/pacientes', payload, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

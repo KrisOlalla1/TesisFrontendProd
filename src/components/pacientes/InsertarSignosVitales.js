@@ -130,7 +130,7 @@ const InsertarSignosVitales = ({ onClose, pacientePreseleccionado }) => {
 
   const fetchPacientes = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/doctores/pacientes', {
+      const res = await axios.get('https://tesis-backend-170896327116.us-central1.run.app/api/doctores/pacientes', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setPacientes(res.data.data);
@@ -151,7 +151,7 @@ const InsertarSignosVitales = ({ onClose, pacientePreseleccionado }) => {
     }
 
     try {
-      const res = await axios.get(`http://localhost:5000/api/pacientes/cedula/${cedula}`, {
+      const res = await axios.get(`https://tesis-backend-170896327116.us-central1.run.app/api/pacientes/cedula/${cedula}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       if (!res.data.data) throw new Error('No encontrado');
@@ -232,7 +232,7 @@ const InsertarSignosVitales = ({ onClose, pacientePreseleccionado }) => {
     });
 
     try {
-      await axios.post('http://localhost:5000/api/signos-vitales', {
+      await axios.post('https://tesis-backend-170896327116.us-central1.run.app/api/signos-vitales', {
         paciente: pacienteId,
         signos: signosSanitizados
       }, {

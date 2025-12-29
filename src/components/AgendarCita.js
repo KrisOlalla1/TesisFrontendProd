@@ -54,7 +54,7 @@ const AgendarCita = ({ onClose, pacientePreseleccionado }) => {
 
   const fetchPacientes = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/doctores/pacientes', {
+      const res = await axios.get('https://tesis-backend-170896327116.us-central1.run.app/api/doctores/pacientes', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setPacientes(res.data.data);
@@ -78,7 +78,7 @@ const AgendarCita = ({ onClose, pacientePreseleccionado }) => {
     }
 
     try {
-      const res = await axios.get(`http://localhost:5000/api/pacientes/cedula/${cedulaLimpiada}`, {
+      const res = await axios.get(`https://tesis-backend-170896327116.us-central1.run.app/api/pacientes/cedula/${cedulaLimpiada}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       if (res.data.data) {
@@ -140,7 +140,7 @@ const AgendarCita = ({ onClose, pacientePreseleccionado }) => {
         tipo: 'cita'
       };
 
-      await axios.post('http://localhost:5000/api/notificaciones', datosNuevaCita, {
+      await axios.post('https://tesis-backend-170896327116.us-central1.run.app/api/notificaciones', datosNuevaCita, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
 

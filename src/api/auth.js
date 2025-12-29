@@ -1,10 +1,8 @@
 // src/api/auth.js
 import axios from 'axios';
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-const API_URL = `${API_BASE}/api/auth`;
-const DOCTOR_API_URL = `${API_BASE}/api/doctores`;
-
+const API_URL = 'https://tesis-backend-170896327116.us-central1.run.app/api/auth';
+const DOCTOR_API_URL = 'https://tesis-backend-170896327116.us-central1.run.app/api/doctores';
 
 const authAxios = axios.create();
 
