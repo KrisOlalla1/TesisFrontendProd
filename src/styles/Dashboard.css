@@ -1,0 +1,1451 @@
+/* Estilos del dashboard */
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+/* Responsive para tablet y móvil */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 0.5rem;
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
+/* Botones y Controles */
+.filters-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.action-btn {
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.action-btn i {
+  font-size: 1rem;
+}
+
+.action-btn:hover {
+  background: #1565c0;
+  transform: translateY(-1px);
+}
+
+.action-btn.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.add-patient-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.add-patient-btn:hover {
+  background: #43a047;
+  transform: translateY(-1px);
+}
+
+/* Tabla de Pacientes */
+.patients-table-container {
+  background: white;
+  border-radius: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+
+.patients-table {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .patients-table-container {
+    border-radius: 8px;
+    margin: 0 -0.5rem;
+  }
+
+  .patients-table {
+    min-width: 700px;
+  }
+
+  .patients-table th,
+  .patients-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .patient-actions-cell {
+    min-width: 250px;
+    gap: 0.2rem;
+  }
+
+  .patient-actions-cell .action-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+  }
+}
+
+.patients-table th {
+  background: #f8f9fa;
+  padding: 1.25rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.patients-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  color: #4a5568;
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+/* Estilos específicos para la tabla de administradores/doctores */
+.admin-table td {
+  padding: 1.5rem 1rem;
+}
+
+.admin-table .acciones-column {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.patients-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.patients-table tbody tr:hover {
+  background: #f8f9fa;
+  cursor: pointer;
+}
+
+.patients-table tr.selected {
+  background: #e8f0fe;
+  border-left: 4px solid #1976d2;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.action-buttons .action-btn {
+  padding: 0.5rem;
+  min-width: auto;
+  background: #f0f2f5;
+  color: #4a5568;
+}
+
+.action-buttons .insert-signs-btn:hover {
+  background: #4caf50;
+  color: white;
+}
+
+.action-buttons .schedule-btn:hover {
+  background: #2196f3;
+  color: white;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  color: #1976d2;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+  background: #e8f0fe;
+}
+
+.patient-actions-cell {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  min-width: 300px;
+}
+.patient-info-header {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.patient-info-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.patient-info-content {
+  padding: 1.5rem;
+}
+
+/* Calendario y Detalles */
+.calendar-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.calendar-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.day-details-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.day-details-title {
+  color: #2c3e50;
+  margin: 0 0 1.5rem 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.section-subtitle {
+  color: #4a5568;
+  font-size: 1rem;
+  margin: 1.5rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Estados y Mensajes */
+.loading-container {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.error-text {
+  color: #e53e3e;
+  padding: 1rem;
+  text-align: center;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+/* Modal de Recomendación */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-title {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tip-text {
+  color: #666;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Estilos adicionales para el modal */
+.recommendation-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+  border-left: 4px solid #4caf50;
+}
+
+.recommendation-box.error {
+  border-left-color: #e53e3e;
+  background: #fff5f5;
+}
+
+.recommendation-title {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.recommendation-title.error {
+  color: #e53e3e;
+}
+
+.recommendation-text {
+  color: #4a5568;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+/* Estilos para badges y estados */
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-programada {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-completada {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-cancelada {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* Estilos para las listas de signos y citas */
+.signs-list,
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sign-item,
+.appointment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.sign-item:hover,
+.appointment-item:hover {
+  background: #edf2f7;
+}
+
+.sign-info,
+.appointment-info {
+  flex: 1;
+}
+
+.sign-time,
+.appointment-time {
+  color: #666;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+.appointment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.appointment-message {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin-top: 0.5rem;
+}
+
+/* Estilos para el calendario - DESACTIVADOS (se usan los de CalendarioSignos.css) */
+/*
+.calendar-container {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.calendar-title {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-header-cell {
+  text-align: center;
+  font-weight: 600;
+  color: #4a5568;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.calendar-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #4a5568;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.calendar-day:hover {
+  background: #e8f0fe;
+}
+
+.calendar-day.has-events {
+  font-weight: 600;
+}
+
+.calendar-day.has-signs {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.calendar-day.has-appointments {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.calendar-day.has-both {
+  background: linear-gradient(135deg, #e8f5e9 50%, #fff3e0 50%);
+  font-weight: 600;
+}
+*/
+
+/* Contenedor del calendario inline (dentro de la tabla) */
+.calendar-inline-container {
+  background: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Botón cerrar calendario */
+.btn-close-calendar {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1001;
+}
+
+.calendar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #4a5568;
+}
+
+.legend-vitals::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: #e8f5e9;
+  border-radius: 3px;
+}
+
+.legend-appointments::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: #fff3e0;
+  border-radius: 3px;
+}
+
+.legend-mixed::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #e8f5e9 50%, #fff3e0 50%);
+  border-radius: 3px;
+  background: #e3f2fd;
+  border-radius: 8px;
+}
+
+.date-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.date-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.signos-encontrados {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.recomendacion-content {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.recomendacion-content.success {
+  background: #e8f5e8;
+  border: 2px solid #4caf50;
+}
+
+.recomendacion-content.error {
+  background: #ffebee;
+  border: 2px solid #f44336;
+}
+
+.recomendacion-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.recomendacion-button {
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.recomendacion-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Estilos del calendario - DESACTIVADOS (se usan los de CalendarioSignos.css) */
+/*
+.calendar-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-title {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 1rem;
+}
+
+.calendar-header-cell {
+  text-align: center;
+  padding: 0.5rem;
+  font-weight: bold;
+  color: #666;
+}
+
+.calendar-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.2s;
+  font-weight: bold;
+  background: #f5f5f5;
+  color: #333;
+  font-size: 0.9rem;
+  padding: 0.3rem;
+}
+
+.calendar-day:hover {
+  transform: scale(1.1);
+}
+
+.calendar-day.has-events {
+  font-weight: bold;
+}
+
+.calendar-day.has-both {
+  background: linear-gradient(45deg, #4caf50 50%, #ff9800 50%) !important;
+  color: #fff;
+}
+
+.calendar-day.has-signs {
+  background: #4caf50 !important;
+  color: #fff;
+}
+
+.calendar-day.has-appointments {
+  background: #ff9800 !important;
+  color: #fff;
+}
+
+.calendar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+*/
+
+.legend-item {
+  font-size: 0.8rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+.legend-item::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  border-radius: 2px;
+}
+
+.legend-vitals::before {
+  background: #4caf50;
+}
+
+.legend-appointments::before {
+  background: #ff9800;
+}
+
+.legend-mixed::before {
+  background: linear-gradient(45deg, #4caf50 50%, #ff9800 50%);
+}
+
+/* Búsqueda de pacientes */
+.search-container {
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-bottom: 0.5rem;
+}
+
+.search-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Lista de pacientes */
+.patients-list {
+  overflow-y: auto;
+  max-height: calc(100vh - 250px);
+}
+
+/* Estilos para las secciones de detalles */
+.details-section {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.actions-top {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Estilos para Formularios (Registrar Doctor/Admin) */
+.form-section {
+  background: white;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #f0f2f5;
+  padding-bottom: 1rem;
+}
+
+.form-header h2 {
+  color: #1976d2;
+  margin: 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.registro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.8rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background: #f8fafc;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+  background: white;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-submit {
+  flex: 1;
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+}
+
+.btn-cancel {
+  flex: 1;
+  background: #f1f5f9;
+  color: #64748b;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.btn-back {
+  background: none;
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: #64748b;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  background: #f1f5f9;
+  color: #1976d2;
+  border-color: #1976d2;
+}
+
+/* Estilos para Toggles de Estado */
+.estado-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.estado-toggle {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  border-radius: 13px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.estado-toggle.active {
+  background: #4caf50;
+}
+
+.estado-toggle.inactive {
+  background: #e0e0e0;
+}
+
+.toggle-slider {
+  position: absolute;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.estado-toggle.active .toggle-slider {
+  transform: translateX(24px);
+}
+
+.toggle-label {
+  display: none;
+  /* Ocultar texto dentro del toggle si se desea */
+}
+
+.estado-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+/* Estilos para Modales (Reutilizando y mejorando) */
+.modal-overlay {
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-group-checkbox {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.form-group-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #334155;
+}
+
+.form-group-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #1976d2;
+}
+
+.recommendation-main-btn {
+  font-size: 1.1rem;
+  padding: 0.8rem 1.5rem;
+  background: #1976d2;
+  transition: all 0.3s ease;
+}
+
+.recommendation-main-btn:hover {
+  background: #1565c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-text {
+  color: #f44336;
+  margin: 1rem 0;
+}
+
+.details-header {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.details-content {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Nuevos estilos */
+.appointment-status {
+  color: white;
+  padding: 0.1rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.status-confirmed {
+  background: #4caf50;
+}
+
+.status-cancelled {
+  background: #f44336;
+}
+
+.status-completed {
+  background: #2196f3;
+}
+
+.status-pending {
+  background: #ff9800;
+}
+
+.message-text {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.2rem;
+}
+
+.modal-overlay,
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 10000;
+  margin: 2rem;
+}
+
+.modal-title {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 1.5rem;
+}
+
+.found-signs {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.signs-title {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.signs-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+.sign-item {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+  border: 1px solid #e9ecef;
+}
+
+.sign-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sign-time {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.recommendation-box {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.recommendation-box.success {
+  background: #e8f5e8;
+  border: 2px solid #4caf50;
+}
+
+.recommendation-box.error {
+  background: #ffebee;
+  border: 2px solid #f44336;
+}
+
+.recommendation-title {
+  margin: 0 0 1rem 0;
+}
+
+.recommendation-title.success {
+  color: #2e7d32;
+}
+
+.recommendation-title.error {
+  color: #d32f2f;
+}
+
+.recommendation-text {
+  font-size: 1rem;
+}
+
+.tip-text {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+}
+
+.found-items-count {
+  font-style: italic;
+}
+
+/* Utilidades */
+.mt-1 {
+  margin-top: 1rem !important;
+}
+
+/* Estilos de estados */
+.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Estilos para mensajes y estados */
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  color: #666;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Mejoras visuales para botones */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.action-btn i {
+  font-size: 1rem;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-btn {
+  background: #2e7d32;
+}
+
+.recommendation-btn:hover {
+  background: #1b5e20;
+}
+
+/* Panel de información del paciente */
+.patient-info-panel {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.patient-info-header {
+  background: #1976d2;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.patient-info-content {
+  padding: 1.5rem;
+}
+
+/* Mejoras para el calendario y detalles */
+.calendar-details-container {
+  display: grid;
+  grid-template-columns: minmax(300px, 2fr) 3fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .calendar-details-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Estilos para resultados de búsqueda */
+.patient-search-result {
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.patient-search-result span {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.patient-search-result button {
+  margin-left: 0.5rem;
+}
+
+/* =============================================== */
+/* RESPONSIVE DESIGN - MEDIA QUERIES */
+/* =============================================== */
+
+/* Ajustes generales para móviles */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 0.5rem;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  /* Tabla responsive */
+  .patients-table-container {
+    border-radius: 8px;
+    margin: 0 -0.5rem;
+    overflow-x: auto;
+  }
+
+  .patients-table {
+    min-width: 700px;
+  }
+
+  .patients-table th,
+  .patients-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  /* Botones de acción responsive */
+  .patient-actions-cell {
+    display: flex;
+    gap: 0.2rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    min-width: 280px;
+  }
+
+  .patient-actions-cell .action-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* Calendario inline responsive */
+  .calendar-inline-container {
+    padding: 0.5rem;
+    margin: 0 -0.5rem;
+    overflow-x: auto;
+  }
+
+  /* Botones generales más pequeños */
+  .action-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .add-patient-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Móviles pequeños (menos de 480px) */
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 0.25rem;
+  }
+
+  .patients-table-container {
+    border-radius: 6px;
+    margin: 0;
+  }
+
+  .patients-table {
+    min-width: 600px;
+  }
+
+  .patients-table th,
+  .patients-table td {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.8rem;
+  }
+
+  .patient-actions-cell {
+    min-width: 240px;
+    gap: 0.1rem;
+  }
+
+  .patient-actions-cell .action-btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .action-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .add-patient-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .patients-table th,
+  .patients-table td {
+    padding: 0.875rem 0.75rem;
+  }
+}
