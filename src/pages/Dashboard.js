@@ -38,27 +38,47 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    // Filtrar pacientes cuando cambia la búsqueda
-    if (busqueda.trim() === '') {
-      setPacientesFiltrados(pacientes);
-    } else {
-      const filtrados = pacientes.filter(p =>
-        p.nombre_completo.toLowerCase().includes(busqueda.toLowerCase()) ||
-        p.cedula.includes(busqueda) ||
-        p.correo.toLowerCase().includes(busqueda.toLowerCase())
-      );
-      setPacientesFiltrados(filtrados);
-    }
-  }, [busqueda, pacientes]);
+    // Cuando el usuario escribe en la búsqueda, hacer búsqueda global
+    // Cuando borra la búsqueda, volver a mis pacientes
+    const delayDebounce = setTimeout(() => {
+      if (busqueda.trim() === '') {
+        // Sin búsqueda: cargar solo mis pacientes
+        fetchPacientes(false);
+      } else {
+        // Con búsqueda: buscar en TODOS los pacientes
+        fetchPacientes(true);
+      }
+    }, 300); // Debounce de 300ms para no hacer muchas peticiones
 
-  const fetchPacientes = async () => {
+    return () => clearTimeout(delayDebounce);
+  }, [busqueda]);
+
+  const fetchPacientes = async (globalSearch = false) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_URL}/api/doctores/pacientes`, {
+      // Si globalSearch=true, agregar ?global=true al endpoint
+      const url = globalSearch
+        ? `${API_URL}/api/doctores/pacientes?global=true`
+        : `${API_URL}/api/doctores/pacientes`;
+
+      const response = await axios.get(url, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setPacientes(response.data.data);
-      setPacientesFiltrados(response.data.data);
+
+      const allPacientes = response.data.data;
+      setPacientes(allPacientes);
+
+      // Aplicar filtro local si hay búsqueda
+      if (busqueda.trim() !== '') {
+        const filtrados = allPacientes.filter(p =>
+          p.nombre_completo.toLowerCase().includes(busqueda.toLowerCase()) ||
+          p.cedula.includes(busqueda) ||
+          p.correo.toLowerCase().includes(busqueda.toLowerCase())
+        );
+        setPacientesFiltrados(filtrados);
+      } else {
+        setPacientesFiltrados(allPacientes);
+      }
     } catch (err) {
       console.error('Error al obtener pacientes:', err);
       setPacientes([]);
